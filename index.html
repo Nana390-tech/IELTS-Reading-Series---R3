@@ -521,7 +521,7 @@ document.querySelectorAll('.pill').forEach(p=>{
 
 function getAns(q){
   const k=KEY[q];
-  if(k.t==='txt'||k.t==='sel'){const el=document.querySelector(`[data-q="${q}"]`);return el?el.value:'';}
+  if(k.t==='txt'||k.t==='sel'){const el=document.querySelector(`.ans[data-q="${q}"]`);return el?el.value:'';}
   const r=document.querySelector(`input[name="q${q}"]:checked`);return r?r.value:'';
 }
 function norm(s){return s.trim().toLowerCase().replace(/[.,]$/,'').replace(/\s+/g,' ');}
@@ -580,12 +580,15 @@ function highlightOpt(qEl,val,good){
 
 function resetPart(part){
   PARTS[part].forEach(q=>{
-    const k=KEY[q];
-    if(k.t==='txt'||k.t==='sel'){const el=document.querySelector(`[data-q="${q}"]`);if(el)el.value='';}
-    document.querySelectorAll(`input[name="q${q}"]`).forEach(r=>r.checked=false);
-    const qEl=document.querySelector(`.q[data-q="${q}"]`);qEl.classList.remove('correct','wrong');
-    qEl.querySelectorAll('.opt').forEach(o=>o.classList.remove('opt-correct','opt-wrong'));
-    const fb=document.querySelector(`[data-fb="${q}"]`);fb.classList.remove('show','ok','no');fb.innerHTML='';
+    const qEl=document.querySelector(`.q[data-q="${q}"]`);
+    if(qEl){
+      qEl.querySelectorAll('input.ans,select.ans').forEach(el=>el.value='');
+      qEl.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
+      qEl.classList.remove('correct','wrong');
+      qEl.querySelectorAll('.opt').forEach(o=>o.classList.remove('opt-correct','opt-wrong'));
+    }
+    const fb=document.querySelector(`[data-fb="${q}"]`);
+    if(fb){fb.classList.remove('show','ok','no');fb.innerHTML='';}
   });
   document.getElementById('banner'+part).classList.remove('show');
   document.getElementById('d'+part).textContent='';
@@ -660,7 +663,7 @@ function loadProgress(input){
       for(let q=1;q<=40;q++){
         const v=ans[q];if(v===undefined||v==='')continue;
         const k=KEY[q];
-        if(k.t==='txt'||k.t==='sel'){const el=document.querySelector(`[data-q="${q}"]`);if(el)el.value=v;}
+        if(k.t==='txt'||k.t==='sel'){const el=document.querySelector(`.ans[data-q="${q}"]`);if(el)el.value=v;}
         else{const r=document.querySelector(`input[name="q${q}"][value="${v}"]`);if(r)r.checked=true;}
       }
       updateLive();
