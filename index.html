@@ -168,6 +168,7 @@
 <header>
   <h1>IELTS Prep Reading Series - R3</h1>
   <div class="sub">HCT Advanced English Courses · 3 Sections · 40 Questions · Interactive Practice</div>
+  <div style="margin-top:9px;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.14);padding:5px 16px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.5px">Stage 3 of 4 <span style="font-size:.7rem;letter-spacing:3px"><span style="color:var(--gold-soft)">●●●</span><span style="opacity:.45">○</span></span></div>
 </header>
 
 <div class="wrap">
@@ -181,6 +182,7 @@
     <div class="band-chip">
       <div class="big" id="bandNum">—</div>
       <div class="cap">Est. Band</div>
+      <div class="cap" style="margin-top:4px;border-top:1px solid rgba(255,255,255,.3);padding-top:4px">🎯 Target 6.0</div>
     </div>
   </div>
 
@@ -424,7 +426,7 @@
   <section class="part" id="part-4">
     <div class="summary show">
       <h2>Your Overall Result</h2>
-      <p style="color:var(--muted);margin-top:-6px">Click below to score every section at once and estimate your IELTS General Training Reading band.</p>
+              <p style="color:var(--muted);margin-top:-6px">Click below to score every section at once and see your estimated band score.</p>
       <div class="actions">
         <button class="btn btn-navy" onclick="checkAll()">Score Whole Test &amp; Estimate Band</button>
         <button class="btn btn-ghost" onclick="resetAll()">Reset Entire Test</button>
@@ -438,7 +440,7 @@
           <div class="v" id="sumBand" style="color:#fff">—</div><div class="k" style="color:#fff">Estimated Band</div></div>
       </div>
       <div id="bandMsg" style="font-size:1rem;font-weight:600;color:var(--navy)"></div>
-      <p class="note">⚠️ Band scores are <b>approximate</b>. They are based on the standard IELTS General Training Reading conversion table (which is easier than the Academic table) and can vary slightly between official tests. Use this as a guide, not an official result.</p>
+      <p class="note">⚠️ Band scores are <b>approximate</b>. They are based on a standard IELTS Reading band conversion and can vary slightly between official tests. The same band means the same level across every practice in this series — 6.0 is the goal for this group. Use this as a guide, not an official result.</p>
     </div>
   </section>
 
@@ -624,7 +626,7 @@ function checkAll(){
   document.getElementById('bandNum').textContent=band.toFixed(1);
   let msg='';
   if(band>=7)msg='🌟 Excellent! That is a strong, university-ready reading score.';
-  else if(band>=6)msg='✅ Good work — Band 6 is the common entry requirement for many programs. Keep pushing!';
+  else if(band>=6)msg='🎯 Target reached! Band 6 is the common entry requirement for many programs. Keep it up!';
   else if(band>=5)msg='👍 Solid progress. Focus on True/False/Not Given and paragraph-matching accuracy to climb higher.';
   else msg='💪 Keep practising — review the explanations carefully and re-read the passages to spot the answers.';
   document.getElementById('bandMsg').textContent=msg;
